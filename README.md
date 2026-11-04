@@ -1,4 +1,4 @@
-# 🚀 Projet DevOps – Application de Gestion des Absences
+#  Projet DevOps – Application de Gestion des Absences
 
 ## 📌 Présentation du projet
 
