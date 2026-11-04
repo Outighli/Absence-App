@@ -1,76 +1,182 @@
-Projet DevOps – Gestion des Absences
-Description
+# 🚀 Projet DevOps – Application de Gestion des Absences
 
-Ce projet consiste à développer une application de gestion des absences des étudiants, en mettant en place une infrastructure DevOps complète.
-L’objectif est d’automatiser le déploiement, la gestion et le monitoring de l’application.
+## 📌 Présentation du projet
 
-Objectifs
-Développer une application de gestion des absences
-Mettre en place une architecture DevOps
-Automatiser le déploiement avec CI/CD
-Utiliser des outils modernes (Docker, Kubernetes, Terraform, Ansible)
+Ce projet consiste à développer et déployer une application web de gestion des absences des étudiants en mettant en œuvre une approche **DevOps**.
 
-Technologies utilisées
- Python (Flask)
- Docker
- Kubernetes
- Terraform
-  Ansible
-  CI/CD (GitLab CI)
-Structure du projet
-Projet_DeVops/
+L'objectif est d'automatiser et de faciliter le cycle de vie de l'application, depuis son développement jusqu'à son déploiement, en utilisant des outils modernes de conteneurisation, d'orchestration, d'Infrastructure as Code et d'intégration continue.
+
+## 🎯 Objectifs
+
+- Développer une application web de gestion des absences.
+- Conteneuriser l'application avec Docker.
+- Automatiser les processus avec une pipeline CI/CD.
+- Orchestrer le déploiement avec Kubernetes.
+- Provisionner l'infrastructure avec Terraform.
+- Automatiser la configuration des serveurs avec Ansible.
+- Améliorer la portabilité, la maintenabilité et la reproductibilité du déploiement.
+
+## 🛠️ Technologies et outils utilisés
+
+| Technologie | Rôle |
+|---|---|
+| Python / Flask | Développement de l'application web |
+| HTML / CSS | Interface utilisateur |
+| SQLite | Stockage des données |
+| Docker | Conteneurisation |
+| Kubernetes | Orchestration des conteneurs |
+| Terraform | Infrastructure as Code |
+| Ansible | Automatisation de la configuration |
+| GitLab CI/CD | Intégration et automatisation du pipeline |
+| Git / GitHub | Gestion et hébergement du code source |
+
+## 📂 Structure du projet
+
+```text
+Absence-App/
 │
-├── app/
-│   ├── app.py
-│   └── requirements.txt
+├── app.py
+├── requirements.txt
+├── Dockerfile
+├── absences.db
+├── .gitignore
+├── .gitlab-ci.yml
+├── README.md
+│
+├── templates/
+│   ├── ajouter.html
+│   ├── base.html
+│   ├── dashboard.html
+│   ├── login.html
+│   └── statistiques.html
 │
 ├── ansible/
-├── terraform/
-├── kubernetes/
+│   ├── inventory.ini
+│   └── playbook.yml
 │
-├── rapport_Projet_devops.pdf
-├── presentation_Projet_Devops.pptx
-└── README.md
-Installation et exécution
- 1. Cloner le projet
-git clone https://github.com/OuarrakLayla/Projet_DeVops.git
-cd Projet_DeVops
- 2. Lancer avec Docker
+├── kubernetes/
+│   └── deployment.yaml
+│
+├── terraform/
+│   ├── main.tf
+│   ├── variables.tf
+│   ├── outputs.tf
+│   └── ...
+│
+├── rapport__Projet_devops.pdf
+└── presentation_Projet_Devops.pptx
+```
+
+## ⚙️ Installation et exécution
+
+### 1. Cloner le dépôt
+
+```bash
+git clone https://github.com/Outighli/Absence-App.git
+cd Absence-App
+```
+
+### 2. Installer les dépendances
+
+Créer un environnement virtuel :
+
+```bash
+python -m venv venv
+```
+
+Activer l'environnement sous Windows :
+
+```bash
+venv\Scripts\activate
+```
+
+Installer les dépendances :
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Lancer l'application
+
+```bash
+python app.py
+```
+
+Accéder à l'application depuis le navigateur :
+
+```text
+http://localhost:5000
+```
+
+## 🐳 Conteneurisation avec Docker
+
+Construire l'image Docker :
+
+```bash
 docker build -t absence-app .
+```
+
+Lancer le conteneur :
+
+```bash
 docker run -p 5000:5000 absence-app
- 3. Accéder à l’application
+```
 
- http://localhost:5000
+L'application sera accessible à l'adresse :
 
- CI/CD Pipeline
+```text
+http://localhost:5000
+```
 
-Le projet utilise GitLab CI pour :
+## 🔄 Intégration continue et déploiement continu (CI/CD)
 
-Build de l’image Docker
-Test de l’application
-Déploiement automatique
- Déploiement Kubernetes
+Le projet utilise **GitLab CI/CD**, configuré à travers le fichier `.gitlab-ci.yml`.
 
-Les fichiers de configuration Kubernetes permettent :
+La pipeline permet d'automatiser les différentes étapes du cycle de vie de l'application, selon les jobs configurés :
 
-Déploiement de l’application
-Gestion des services
-Scalabilité
- Infrastructure as Code
-Terraform : Provisionnement des ressources
-Ansible : Configuration automatique des serveurs
- Résultats
-Application fonctionnelle
-Déploiement automatisé
-Architecture scalable et maintenable
- Auteurs
-Ouarrak Layla
-Outighli Sanae
+- Construction de l'image Docker (Build).
+- Exécution des tests (Test).
+- Déploiement de l'application (Deploy), si configuré.
 
- Remarques
-Le fichier absences.db est utilisé dans l’application pour stocker les données des absences
-Utiliser .gitignore pour exclure les fichiers inutiles
- Conclusion
+## ☸️ Orchestration avec Kubernetes
 
-Ce projet démontre l’importance du DevOps dans le cycle de vie des applications modernes, en combinant développement, automatisation et déploiement.
-"# Absence-App" 
+Le dossier `kubernetes/` contient les fichiers de configuration nécessaires au déploiement de l'application.
+
+Kubernetes permet notamment de :
+
+- Déployer l'application sous forme de Pods.
+- Gérer les ressources de déploiement.
+- Configurer les services.
+- Faciliter la gestion et la scalabilité de l'application.
+
+## 🏗️ Infrastructure as Code (IaC)
+
+### Terraform
+
+Terraform est utilisé pour automatiser le provisionnement de l'infrastructure à partir de fichiers de configuration déclaratifs.
+
+### Ansible
+
+Ansible permet d'automatiser la configuration et la gestion des serveurs à l'aide de playbooks.
+
+## 📊 Livrables du projet
+
+- Application web de gestion des absences.
+- Configuration Docker.
+- Pipeline CI/CD.
+- Fichiers Kubernetes.
+- Scripts Terraform.
+- Playbooks Ansible.
+- Rapport du projet (PDF).
+- Présentation du projet (PowerPoint).
+
+## 👩‍💻 Auteurs
+
+**Layla Ouarrak**  
+**Sanae Outighli**
+
+## 🎓 Conclusion
+
+Ce projet met en pratique les principes fondamentaux du DevOps en combinant développement logiciel, conteneurisation, automatisation et orchestration.
+
+Il permet de comprendre comment intégrer les outils DevOps dans le cycle de vie d'une application afin de faciliter son déploiement et sa maintenance.
